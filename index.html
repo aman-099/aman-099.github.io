@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>YOUR_NAME · Android Developer</title>
+  <meta name="description" content="Portfolio of YOUR_NAME, an Android developer crafting fast, clean Kotlin apps with Jetpack Compose." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="image" href="assets/placeholder-masked.jpg" />
+</head>
+<body>
+  <!-- Custom cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient cursor glow + film grain -->
+  <div class="ambient-glow" id="ambient-glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Aurora background -->
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="site-shell">
+    <!-- ============ NAV ============ -->
+    <header class="nav glass" id="nav">
+      <a class="logo" href="#top" id="nav-logo"></a>
+      <nav class="nav-links" id="nav-links"></nav>
+      <a href="#contact" class="nav-cta magnetic"><span class="cta-dot"></span> Hire Me</a>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- Mobile menu -->
+    <nav class="mobile-menu glass" id="mobile-menu" aria-hidden="true"></nav>
+
+    <main>
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="top">
+        <div class="hero-left" id="hero-left"></div>
+        <div class="hero-center" id="hero-center"></div>
+        <div class="hero-right" id="hero-right"></div>
+      </section>
+
+      <!-- ============ ABOUT ============ -->
+      <section class="section" id="about">
+        <div class="section-head" data-scroll>
+          <span class="mono section-tag">01 / ABOUT</span>
+          <h2 class="section-title">THE DEV<span class="grad-text">.</span></h2>
+        </div>
+        <div class="about-grid" id="about-grid"></div>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section class="section" id="skills">
+        <div class="section-head" data-scroll>
+          <span class="mono section-tag">02 / SKILLS</span>
+          <h2 class="section-title">THE STACK<span class="grad-text">.</span></h2>
+        </div>
+        <div class="skills-grid" id="skills-grid"></div>
+        <div class="glass bars-panel" id="bars-panel" data-scroll></div>
+      </section>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section class="section" id="experience">
+        <div class="section-head" data-scroll>
+          <span class="mono section-tag">03 / EXPERIENCE</span>
+          <h2 class="section-title">THE JOURNEY<span class="grad-text">.</span></h2>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <!-- ============ WORK / PROJECTS ============ -->
+      <section class="section" id="work">
+        <div class="section-head" data-scroll>
+          <span class="mono section-tag">04 / SELECTED WORK</span>
+          <h2 class="section-title">SHIPPED &amp; PROUD<span class="grad-text">.</span></h2>
+        </div>
+        <div class="project-grid" id="project-grid"></div>
+        <div class="view-all-wrap" data-scroll>
+          <a href="projects.html" class="btn btn-primary magnetic" id="view-all-btn">VIEW ALL PROJECTS
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3m0 0H4m7 0v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section class="section" id="contact"></section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="foot" id="foot"></footer>
+  </div>
+
+  <!-- ============ PROJECT DETAIL MODAL ============ -->
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-panel glass">
+      <div class="modal-header">
+        <button class="modal-back" id="modal-back">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>BACK</span>
+        </button>
+        <span class="modal-category mono" id="modal-category"></span>
+        <button class="modal-close-x" id="modal-close" aria-label="Close detail">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- GSAP -->
+  <script src="data.js"></script>
+  <script>
+    window.__gsapFallback = function () {
+      if (window.gsap) return;
+      var s = document.createElement("script");
+      s.src = "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js";
+      document.body.appendChild(s);
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" onerror="window.__gsapFallback && window.__gsapFallback()"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

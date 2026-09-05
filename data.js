@@ -1,0 +1,367 @@
+window.DATA =
+{
+  "personal": {
+    "name": "YOUR_NAME",
+    "role": "Android Developer",
+    "bio": [
+      "I build Android apps the way good software should be built — <strong>fast, tested and a pleasure to use</strong>. I sweat the small stuff: animation curves, empty states, offline behaviour, and that last 5% of polish most people skip.",
+      "Currently shipping production Kotlin with <strong>Jetpack Compose</strong>, <strong>Coroutines &amp; Flow</strong> and <strong>Clean Architecture</strong>. When I'm not debugging, I'm writing about Android or pushing open source."
+    ],
+    "email": "you@email.com",
+    "location": "Remote / Earth",
+    "education": "B.Tech CSE",
+    "status": "Available for work"
+  },
+  "hero": {
+    "kicker": "ANDROID DEVELOPER · OPEN FOR WORK",
+    "titleLine1": "BEHIND THE",
+    "titleLine2": "SCREEN",
+    "subtitle": "I'm Your Name — an Android developer building fast, clean, human-centred Kotlin apps. Jetpack Compose to release-ready APKs, and everything in between.",
+    "stats": [
+      {
+        "value": "3+",
+        "label": "YEARS ANDROID"
+      },
+      {
+        "value": "12",
+        "label": "APPS SHIPPED"
+      },
+      {
+        "value": "4.9★",
+        "label": "AVG RATING"
+      },
+      {
+        "value": "50K+",
+        "label": "DOWNLOADS"
+      }
+    ],
+    "techChips": [
+      "KOTLIN",
+      "COMPOSE",
+      "MVVM",
+      "FIREBASE",
+      "ROOM",
+      "HILT"
+    ],
+    "statusChips": [
+      "KOTLIN",
+      "COMPOSE",
+      "FIREBASE"
+    ],
+    "floatChips": [
+      "● KOTLIN 2.x",
+      "JETPACK COMPOSE",
+      "✓ CI / CD"
+    ]
+  },
+  "skills": [
+    {
+      "icon": "{}",
+      "title": "Languages",
+      "desc": "Kotlin-first, Java legacy, coroutines & Flow, generics, DSL design."
+    },
+    {
+      "icon": "UI",
+      "title": "UI / Compose",
+      "desc": "Jetpack Compose, Material 3, custom animations, adaptive layouts."
+    },
+    {
+      "icon": "DB",
+      "title": "Data & Network",
+      "desc": "Room, Retrofit, Ktor, DataStore, offline-first caching."
+    },
+    {
+      "icon": "▲",
+      "title": "Architecture",
+      "desc": "MVVM, Clean Architecture, Hilt DI, multi-module builds."
+    },
+    {
+      "icon": "✓",
+      "title": "Quality",
+      "desc": "Unit / UI tests, TDD, Compose testing, Firebase Test Lab."
+    },
+    {
+      "icon": "▶",
+      "title": "Ship & Grow",
+      "desc": "Play Store release, CI/CD, analytics, performance profiling."
+    }
+  ],
+  "proficiency": [
+    {
+      "label": "Kotlin / Compose",
+      "level": 95
+    },
+    {
+      "label": "Architecture & Testing",
+      "level": 88
+    },
+    {
+      "label": "Java / Legacy",
+      "level": 78
+    },
+    {
+      "label": "DevOps / CI-CD",
+      "level": 72
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Android Engineer",
+      "company": "Company / Studio",
+      "date": "2024 — NOW",
+      "desc": "Leading the Android app for a 1M+ user product. Compose-first rewrite, CI/CD rollout, 40% crash reduction."
+    },
+    {
+      "role": "Android Developer",
+      "company": "Agency / Startup",
+      "date": "2022 — 2024",
+      "desc": "Shipped 8 apps across fintech, fitness and e-commerce. Owned architecture, releases and Play Store uplift."
+    },
+    {
+      "role": "Freelance Developer",
+      "company": "Self-employed",
+      "date": "2021 — 2022",
+      "desc": "Built MVPs and hobby apps end-to-end. Learned to ship things people actually use."
+    }
+  ],
+  "projects": [
+    {
+      "id": "ecommerce",
+      "title": "E-Commerce App",
+      "desc": "Full storefront with checkout flow, Room cart and push-notification re-engagement.",
+      "longDesc": "A complete e-commerce experience built with Jetpack Compose. Features a product catalogue with search and filtering, shopping cart persisted via Room, Stripe payment integration, order tracking with real-time status updates, and FCM push notifications for abandoned cart recovery and promotional campaigns.",
+      "category": "android",
+      "tags": [
+        "COMPOSE",
+        "ROOM",
+        "FCM"
+      ],
+      "thumb": {
+        "grad": 1,
+        "glyph": "EC"
+      },
+      "featured": true,
+      "links": {
+        "github": "#",
+        "live": "#"
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.ecommerce"
+    },
+    {
+      "id": "fitness",
+      "title": "Fitness Tracker",
+      "desc": "Compose-native tracker with live charts, streaks and offline workout sync.",
+      "longDesc": "Personal fitness companion with real-time workout tracking, calorie and macro logging, progress charts powered by a custom Compose Canvas renderer, daily streak system, and offline-first sync with Firestore. Health Connect integration for step and heart-rate data.",
+      "category": "android",
+      "tags": [
+        "CHARTS",
+        "HEALTH",
+        "FIREBASE"
+      ],
+      "thumb": {
+        "grad": 2,
+        "glyph": "FT"
+      },
+      "featured": true,
+      "links": {
+        "github": "#",
+        "live": "#"
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.fitness"
+    },
+    {
+      "id": "news",
+      "title": "News Reader",
+      "desc": "Offline-first RSS client with reader mode and smart background fetch.",
+      "longDesc": "Minimal RSS reader with offline caching via Room, WorkManager background sync, reader mode for clean article viewing, dark/light theme, and bookmark system. Supports feed discovery and custom OPML import.",
+      "category": "android",
+      "tags": [
+        "WORKMANAGER",
+        "ROOM",
+        "RSS"
+      ],
+      "thumb": {
+        "grad": 3,
+        "glyph": "NR"
+      },
+      "featured": true,
+      "links": {
+        "github": "#",
+        "live": "#"
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.newsreader"
+    },
+    {
+      "id": "chatsapp",
+      "title": "Chat App",
+      "desc": "Real-time messaging with Firebase, read receipts and media sharing.",
+      "longDesc": "End-to-end real-time chat application using Firebase Realtime Database with one-to-one and group messaging, image and voice note sharing, read receipts, typing indicators, push notifications, and user presence status.",
+      "category": "android",
+      "tags": [
+        "FIREBASE",
+        "REALTIME DB",
+        "STORAGE"
+      ],
+      "thumb": {
+        "grad": 4,
+        "glyph": "CA"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.chatsapp"
+    },
+    {
+      "id": "weather",
+      "title": "Weather Dashboard",
+      "desc": "Beautiful weather UI with animated icons and 7-day forecast.",
+      "longDesc": "A polished weather dashboard featuring animated weather icons in Lottie, current conditions with location-based auto-detect, 7-day and hourly forecasts, air quality index, sunrise/sunset times, and a clean Material 3 design system.",
+      "category": "web",
+      "tags": [
+        "REACT",
+        "TAILWIND",
+        "LOTTIE"
+      ],
+      "thumb": {
+        "grad": 5,
+        "glyph": "WD"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      }
+    },
+    {
+      "id": "budget",
+      "title": "Budget Tracker",
+      "desc": "Personal finance app with category breakdown and recurring expense sync.",
+      "longDesc": "Personal finance tracker with expense and income logging, category breakdown with donut charts, monthly budget goals with alerts, recurring transaction scheduling, CSV export, and local-first storage via Room with optional cloud backup.",
+      "category": "android",
+      "tags": [
+        "ROOM",
+        "CHARTS",
+        "DATASTORE"
+      ],
+      "thumb": {
+        "grad": 6,
+        "glyph": "BT"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.budgettracker"
+    },
+    {
+      "id": "music",
+      "title": "Music Player",
+      "desc": "Material You media player with playlist queue and lyrics overlay.",
+      "longDesc": "A full-featured local music player with Media3 integration, Material You dynamic theming from album art, playlist management, crossfade, gapless playback, lyrics overlay synced to playback position, and a lockscreen notification controller.",
+      "category": "android",
+      "tags": [
+        "MEDIA3",
+        "MATERIAL YOU",
+        "COROUTINES"
+      ],
+      "thumb": {
+        "grad": 7,
+        "glyph": "MP"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      }
+    },
+    {
+      "id": "recipe",
+      "title": "Recipe Hub",
+      "desc": "Recipe sharing PWA with search, filters and save-to-collection.",
+      "longDesc": "A progressive web app for recipe discovery and sharing. Features full-text search, dietary and cuisine filters, step-by-step cooking mode, save to collections, and a clean responsive design built with React and Tailwind.",
+      "category": "web",
+      "tags": [
+        "REACT",
+        "PWA",
+        "SUPABASE"
+      ],
+      "thumb": {
+        "grad": 8,
+        "glyph": "RH"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      }
+    },
+    {
+      "id": "toollib",
+      "title": "Compose Toolkit",
+      "desc": "Open-source Compose utility library with 15+ reusable components.",
+      "longDesc": "A collection of production-ready Jetpack Compose components: animated loading skeletons, bottom sheet system, custom slider, shimmer effects, permission handling, and pagination helpers. Published to Maven Central with 200+ GitHub stars.",
+      "category": "open-source",
+      "tags": [
+        "COMPOSE",
+        "KOTLIN",
+        "Maven"
+      ],
+      "thumb": {
+        "grad": 9,
+        "glyph": "CT"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      }
+    },
+    {
+      "id": "portfolio",
+      "title": "Portfolio Generator",
+      "desc": "CLI tool that generates portfolio sites from a JSON config file.",
+      "longDesc": "A Node.js CLI tool that scaffolds a complete developer portfolio from a single JSON config file. Supports multiple themes, auto-deploys to GitHub Pages, and includes Lighthouse performance optimization out of the box.",
+      "category": "open-source",
+      "tags": [
+        "NODE",
+        "CLI",
+        "HTML/CSS"
+      ],
+      "thumb": {
+        "grad": 10,
+        "glyph": "PG"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      }
+    }
+  ],
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "#",
+      "icon": "github"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "#",
+      "icon": "linkedin"
+    },
+    {
+      "name": "Play Store",
+      "url": "#",
+      "icon": "playstore"
+    }
+  ],
+  "categories": [
+    "all",
+    "android",
+    "web",
+    "open-source"
+  ]
+}
