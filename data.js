@@ -120,219 +120,224 @@ window.DATA =
   ],
   "projects": [
     {
-      "id": "ecommerce",
-      "title": "E-Commerce App",
-      "desc": "Full storefront with checkout flow, Room cart and push-notification re-engagement.",
-      "longDesc": "A complete e-commerce experience built with Jetpack Compose. Features a product catalogue with search and filtering, shopping cart persisted via Room, Stripe payment integration, order tracking with real-time status updates, and FCM push notifications for abandoned cart recovery and promotional campaigns.",
+      "id": "video-downloader",
+      "title": "Video Downloader and Saver",
+      "desc": "All-in-one video downloader and saver built from scratch with Google AdMob monetization.",
+      "longDesc": "Developed the complete application from scratch and integrated the Google Mobile Ads SDK for monetization. Continually monitored and optimized ad show-rate performance, and used Firebase Crashlytics to diagnose and resolve production issues reported by users.",
       "category": "android",
       "tags": [
-        "COMPOSE",
-        "ROOM",
-        "FCM"
+        "KOTLIN",
+        "ADMOB",
+        "CRASHLYTICS"
       ],
       "thumb": {
         "grad": 1,
-        "glyph": "EC"
+        "glyph": "VD"
       },
       "featured": true,
       "links": {
         "github": "#",
         "live": "#"
       },
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.ecommerce"
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=videodownloader.allvideo"
     },
     {
-      "id": "fitness",
-      "title": "Fitness Tracker",
-      "desc": "Compose-native tracker with live charts, streaks and offline workout sync.",
-      "longDesc": "Personal fitness companion with real-time workout tracking, calorie and macro logging, progress charts powered by a custom Compose Canvas renderer, daily streak system, and offline-first sync with Firestore. Health Connect integration for step and heart-rate data.",
+      "id": "pdf-reader",
+      "title": "PDF Reader : Edit & View",
+      "desc": "PDF reader with 16 KB page-size modernization and first-class ad integration.",
+      "longDesc": "Resolved Android 16 KB page-size compatibility issues and migrated legacy dependencies to newer versions. Integrated and managed the Google Mobile Ads SDK, optimizing ad implementation and maximizing show-rate performance.",
       "category": "android",
       "tags": [
-        "CHARTS",
-        "HEALTH",
-        "FIREBASE"
+        "PDF",
+        "ADMOB",
+        "SDK MIGRATION"
       ],
       "thumb": {
         "grad": 2,
-        "glyph": "FT"
+        "glyph": "PDF"
       },
       "featured": true,
       "links": {
         "github": "#",
         "live": "#"
       },
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.fitness"
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.scanner.phone.document.pdf.files.creator"
     },
     {
-      "id": "news",
-      "title": "News Reader",
-      "desc": "Offline-first RSS client with reader mode and smart background fetch.",
-      "longDesc": "Minimal RSS reader with offline caching via Room, WorkManager background sync, reader mode for clean article viewing, dark/light theme, and bookmark system. Supports feed discovery and custom OPML import.",
+      "id": "show-caller",
+      "title": "Show Caller ID & Phone Dialer",
+      "desc": "Caller ID and phone dialer built from scratch with heavy ad monetization focus.",
+      "longDesc": "Developed the application from scratch and implemented core Android functionality for caller ID and dialing. Optimized ad show-rate performance and collaborated with the team on continuous feature, UX, and application-flow improvements.",
       "category": "android",
       "tags": [
-        "WORKMANAGER",
-        "ROOM",
-        "RSS"
+        "CALLER ID",
+        "DIALER",
+        "ADMOB"
       ],
       "thumb": {
         "grad": 3,
-        "glyph": "NR"
+        "glyph": "SC"
       },
       "featured": true,
       "links": {
         "github": "#",
         "live": "#"
       },
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.newsreader"
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=phonedialer.call.smscontacts.message"
     },
     {
-      "id": "chatsapp",
-      "title": "Chat App",
-      "desc": "Real-time messaging with Firebase, read receipts and media sharing.",
-      "longDesc": "End-to-end real-time chat application using Firebase Realtime Database with one-to-one and group messaging, image and voice note sharing, read receipts, typing indicators, push notifications, and user presence status.",
+      "id": "gallery",
+      "title": "Gallery - AI Photo Editor",
+      "desc": "AI photo gallery editor with redesigned flows and production crash hardening.",
+      "longDesc": "Investigated and resolved production crashes using Firebase Crashlytics. Addressed Android 16 KB compatibility issues and redesigned key application flows to improve usability and the overall user experience.",
       "category": "android",
       "tags": [
-        "FIREBASE",
-        "REALTIME DB",
-        "STORAGE"
+        "GALLERY",
+        "CRASHLYTICS",
+        "UX"
       ],
       "thumb": {
         "grad": 4,
-        "glyph": "CA"
+        "glyph": "GA"
       },
       "featured": false,
       "links": {
         "github": "#",
         "live": "#"
       },
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.chatsapp"
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.gallery.photo.image.album.viewer.video"
     },
     {
-      "id": "weather",
-      "title": "Weather Dashboard",
-      "desc": "Beautiful weather UI with animated icons and 7-day forecast.",
-      "longDesc": "A polished weather dashboard featuring animated weather icons in Lottie, current conditions with location-based auto-detect, 7-day and hourly forecasts, air quality index, sunrise/sunset times, and a clean Material 3 design system.",
-      "category": "web",
+      "id": "flirty-messages",
+      "title": "Flirty Messages & Pickup Lines",
+      "desc": "Pickup-line and messaging app with analytics-driven ad placement.",
+      "longDesc": "Integrated and optimized ads while resolving show-rate and placement issues. Used Firebase Analytics to analyze feature usage and user behavior, guiding ad placement and UX improvements across the app.",
+      "category": "android",
       "tags": [
-        "REACT",
-        "TAILWIND",
-        "LOTTIE"
+        "ANALYTICS",
+        "ADS",
+        "FIREBASE"
       ],
       "thumb": {
         "grad": 5,
-        "glyph": "WD"
+        "glyph": "FM"
       },
       "featured": false,
       "links": {
         "github": "#",
         "live": "#"
-      }
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=pickupline.lovemessages.flirting"
     },
     {
-      "id": "budget",
-      "title": "Budget Tracker",
-      "desc": "Personal finance app with category breakdown and recurring expense sync.",
-      "longDesc": "Personal finance tracker with expense and income logging, category breakdown with donut charts, monthly budget goals with alerts, recurring transaction scheduling, CSV export, and local-first storage via Room with optional cloud backup.",
+      "id": "voice-calculator",
+      "title": "Voice Calculator",
+      "desc": "Voice-capable calculator with reworked core logic and scientific functions.",
+      "longDesc": "Developed and maintained the core calculation logic for the application. Enhanced the calculator with scientific calculations and additional functional capabilities for everyday use.",
       "category": "android",
       "tags": [
-        "ROOM",
-        "CHARTS",
-        "DATASTORE"
+        "CALCULATOR",
+        "KOTLIN",
+        "PERFORMANCE"
       ],
       "thumb": {
         "grad": 6,
-        "glyph": "BT"
+        "glyph": "VC"
       },
       "featured": false,
       "links": {
         "github": "#",
         "live": "#"
       },
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.example.budgettracker"
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.voice.calculator.speak.talking.app"
     },
     {
-      "id": "music",
-      "title": "Music Player",
-      "desc": "Material You media player with playlist queue and lyrics overlay.",
-      "longDesc": "A full-featured local music player with Media3 integration, Material You dynamic theming from album art, playlist management, crossfade, gapless playback, lyrics overlay synced to playback position, and a lockscreen notification controller.",
+      "id": "contacts",
+      "title": "Contacts",
+      "desc": "Contact manager with SIM and recent-details access, hardened via Crashlytics.",
+      "longDesc": "Optimized ad show-rate performance and continuously improved application functionality and UX. Used Firebase Crashlytics and Analytics to identify production issues, analyze user behavior, and drive UX improvements.",
       "category": "android",
       "tags": [
-        "MEDIA3",
-        "MATERIAL YOU",
-        "COROUTINES"
+        "CONTACTS",
+        "CRASHLYTICS",
+        "ANALYTICS"
       ],
       "thumb": {
         "grad": 7,
-        "glyph": "MP"
-      },
-      "featured": false,
-      "links": {
-        "github": "#",
-        "live": "#"
-      }
-    },
-    {
-      "id": "recipe",
-      "title": "Recipe Hub",
-      "desc": "Recipe sharing PWA with search, filters and save-to-collection.",
-      "longDesc": "A progressive web app for recipe discovery and sharing. Features full-text search, dietary and cuisine filters, step-by-step cooking mode, save to collections, and a clean responsive design built with React and Tailwind.",
-      "category": "web",
-      "tags": [
-        "REACT",
-        "PWA",
-        "SUPABASE"
-      ],
-      "thumb": {
-        "grad": 8,
-        "glyph": "RH"
-      },
-      "featured": false,
-      "links": {
-        "github": "#",
-        "live": "#"
-      }
-    },
-    {
-      "id": "toollib",
-      "title": "Compose Toolkit",
-      "desc": "Open-source Compose utility library with 15+ reusable components.",
-      "longDesc": "A collection of production-ready Jetpack Compose components: animated loading skeletons, bottom sheet system, custom slider, shimmer effects, permission handling, and pagination helpers. Published to Maven Central with 200+ GitHub stars.",
-      "category": "open-source",
-      "tags": [
-        "COMPOSE",
-        "KOTLIN",
-        "Maven"
-      ],
-      "thumb": {
-        "grad": 9,
         "glyph": "CT"
       },
       "featured": false,
       "links": {
         "github": "#",
         "live": "#"
-      }
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.contacts.number.add.sim.phone.recent.details"
     },
     {
-      "id": "portfolio",
-      "title": "Portfolio Generator",
-      "desc": "CLI tool that generates portfolio sites from a JSON config file.",
-      "longDesc": "A Node.js CLI tool that scaffolds a complete developer portfolio from a single JSON config file. Supports multiple themes, auto-deploys to GitHub Pages, and includes Lighthouse performance optimization out of the box.",
-      "category": "open-source",
+      "id": "arrow-escape",
+      "title": "Arrow Escape: Logic Puzzles",
+      "desc": "Logic puzzle game shipped in one week — Jetpack Compose, zero XML.",
+      "longDesc": "Developed the complete application from scratch within one week using Jetpack Compose without XML layouts. Integrated rewarded ads and resolved ad delivery and reward-related issues for a smooth player experience.",
+      "category": "android",
       "tags": [
-        "NODE",
-        "CLI",
-        "HTML/CSS"
+        "COMPOSE",
+        "GAME",
+        "REWARDED"
       ],
       "thumb": {
-        "grad": 10,
-        "glyph": "PG"
+        "grad": 8,
+        "glyph": "AE"
       },
       "featured": false,
       "links": {
         "github": "#",
         "live": "#"
-      }
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.arrow.escape.logic.puzzles"
+    },
+    {
+      "id": "voice-translator",
+      "title": "AI Live Voice Translator",
+      "desc": "Real-time voice translation app built from scratch with AdMob and analytics.",
+      "longDesc": "Developed the application from scratch and integrated the Google Mobile Ads SDK. Used Firebase Analytics to analyze feature usage and user behavior, identifying issues and improving the overall user experience.",
+      "category": "android",
+      "tags": [
+        "VOICE",
+        "AI",
+        "ANALYTICS"
+      ],
+      "thumb": {
+        "grad": 9,
+        "glyph": "VT"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.ai.live.voice.translator"
+    },
+    {
+      "id": "street-view",
+      "title": "Street View : Map & Navigation",
+      "desc": "Location-based street view and satellite map built on Google Maps APIs.",
+      "longDesc": "Developed the application from scratch and integrated Google Maps APIs for location-based and core mapping functionality. Integrated the Google Mobile Ads SDK and managed ad implementation across the application.",
+      "category": "android",
+      "tags": [
+        "GOOGLE MAPS",
+        "LOCATION",
+        "ADMOB"
+      ],
+      "thumb": {
+        "grad": 10,
+        "glyph": "SV"
+      },
+      "featured": false,
+      "links": {
+        "github": "#",
+        "live": "#"
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.earth.map.live.world.satellite.view"
     }
   ],
   "socials": [
@@ -354,8 +359,6 @@ window.DATA =
   ],
   "categories": [
     "all",
-    "android",
-    "web",
-    "open-source"
+    "android"
   ]
 }
