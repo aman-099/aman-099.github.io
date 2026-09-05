@@ -421,6 +421,7 @@
           </div>
           <textarea class="field-input field-area" name="message" rows="3" placeholder="Tell me about your project…" required aria-label="Message"></textarea>
           <button class="btn btn-primary magnetic" type="submit"><span>Send Message</span></button>
+          <p class="sent-note form-note" id="form-note" role="status" aria-live="polite"></p>
         </form>
         <div class="contact-alternate mono">
           <span>or email me directly</span>
@@ -959,8 +960,10 @@
 
   if (window.gsap && !prefersReduced) {
     gsap.from(".hero-title .ch", {
-      yPercent: 115, opacity: 0, duration: 0.6, stagger: 0.028,
-      ease: "power3.out", delay: 0.05,
+      yPercent: 42, opacity: 0, scale: 0.5, rotateX: -90,
+      transformPerspective: 700, filter: "blur(9px)",
+      duration: 0.8, stagger: 0.035, ease: "power3.out", delay: 0.05,
+      clearProps: "filter",
     });
   }
 
@@ -1126,10 +1129,54 @@
   /* ---------- Contact form (FormSubmit AJAX -> email) ---------- */
   const form = document.getElementById("contact-form");
   if (form) {
+    const note = document.getElementById("form-note");
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const showNote = (msg, isErr) => {
+      note.textContent = msg;
+      note.classList.toggle("is-error", !!isErr);
+    };
+    const markField = (f, bad) => f.classList.toggle("field-error", !!bad);
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const btn = form.querySelector("button[type=submit]");
       const original = btn.innerHTML;
+      const inputs = {
+        name: form.elements.name,
+        email: form.elements.email,
+        message: form.elements.message,
+      };
+      Object.values(inputs).forEach((f) => markField(f, false));
+      note.textContent = "";
+
+      const vals = {};
+      Object.entries(inputs).forEach(([k, f]) => {
+        vals[k] = f.value.trim();
+        f.value = vals[k];
+      });
+
+      let invalid = false;
+      showNote("");
+      if (!vals.name) { markField(inputs.name, true); invalid = true; }
+      if (!vals.email) { markField(inputs.email, true); invalid = true; }
+      else if (!EMAIL_RE.test(vals.email)) {
+        markField(inputs.email, true);
+        note.textContent = "⚠ Please enter a valid email address.";
+        note.classList.add("is-error");
+        inputs.email.focus();
+        invalid = true;
+      }
+      if (!vals.message) { markField(inputs.message, true); invalid = true; }
+      if (invalid) {
+        if (!note.textContent) {
+          note.textContent = "⚠ Please fill in the highlighted fields.";
+          note.classList.add("is-error");
+        }
+        const firstBad = form.querySelector(".field-error");
+        if (firstBad) firstBad.focus();
+        return;
+      }
+
       const fd = new FormData(form);
       fd.append("_subject", "New message from aman-099.github.io");
       fd.append("_template", "table");
@@ -1145,7 +1192,8 @@
         .then(d => {
           if (d && (d.success === true || d.success === "true")) {
             btn.innerHTML = "✓ Sent — I'll reply soon";
-            form.querySelectorAll(".field-input").forEach((f) => (f.value = ""));
+            note.classList.remove("is-error");
+            Object.values(inputs).forEach((f) => (f.value = ""));
           } else {
             throw new Error("FormSubmit rejected");
           }
@@ -1161,6 +1209,18 @@
             btn.style.opacity = "";
           }, 3500);
         });
+    });
+
+    /* clear the error state as the user types */
+    form.querySelectorAll(".field-input").forEach((f) => {
+      f.addEventListener("input", () => {
+        markField(f, false);
+        const { name, email, message } = form.elements;
+        if (note.textContent && name.value.trim() && email.value.trim() && message.value.trim() && EMAIL_RE.test(email.value.trim())) {
+          note.textContent = "";
+          note.classList.remove("is-error");
+        }
+      });
     });
   }
   /* ---------- Play Store live data ---------- */

@@ -1438,6 +1438,18 @@ main {
   background: rgba(255, 255, 255, 0.07);
   box-shadow: 0 0 0 3px rgba(61, 220, 132, 0.12);
 }
+.field-input.field-error {
+  border-color: rgba(248, 113, 113, 0.75);
+  background: rgba(248, 113, 113, 0.06);
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.14);
+  animation: fieldShake 0.35s;
+}
+@keyframes fieldShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-2px); }
+}
 .field-area {
   resize: vertical;
   min-height: 96px;
@@ -1449,6 +1461,12 @@ main {
   font-size: 0.78rem;
   color: var(--accent);
   min-height: 1.1em;
+}
+.form-note.is-error {
+  color: #f87171;
+}
+.form-note:empty {
+  min-height: 0;
 }
 
 .contact-alternate {
@@ -1939,6 +1957,10 @@ main {
 }
 
 /* ---------- Hero title: char split + gradient shimmer ---------- */
+.hero-title {
+  position: relative;
+  overflow: hidden;
+}
 .hero-title .ch {
   display: inline-block;
   white-space: pre;
@@ -1952,10 +1974,37 @@ main {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: shineTxt 7s linear infinite, accentGlitch 9s steps(1) infinite;
+  animation: shineTxt 7s linear infinite, accentGlow 3.6s ease-in-out infinite;
 }
 @keyframes shineTxt {
   to { background-position: 220% center; }
+}
+
+/* Breathing neon halo behind the accent line */
+@keyframes accentGlow {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(61, 220, 132, 0.18)); }
+  50% { filter: drop-shadow(0 0 16px rgba(61, 220, 132, 0.42)); }
+}
+
+/* Slow signal-sweep across the whole headline */
+.hero-title::after {
+  content: "";
+  position: absolute;
+  top: -15%;
+  bottom: -15%;
+  left: -30%;
+  width: 60%;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(61, 220, 132, 0.14) 35%, rgba(167, 243, 208, 0.2) 50%, rgba(45, 212, 191, 0.14) 65%, transparent);
+  transform: skewX(-18deg);
+  mix-blend-mode: screen;
+  border-radius: 8px;
+  animation: heroScan 4.8s ease-in-out infinite;
+}
+@keyframes heroScan {
+  0%, 82% { left: -30%; opacity: 0; }
+  86% { opacity: 1; }
+  98%, 100% { left: 115%; opacity: 0; }
 }
 
 /* Blue fade: underline draws in, the "screen" reveals */
@@ -1976,17 +2025,6 @@ main {
 }
 @keyframes hiDraw {
   to { transform: scaleX(1); }
-}
-
-/* Periodic glitch burst on the accent line */
-@keyframes accentGlitch {
-  0%, 87.4% { transform: none; clip-path: none; text-shadow: none; }
-  88% { transform: translate(-2px, 1px) skewX(-2deg); text-shadow: -3px 0 rgba(61, 220, 132, 0.75), 3px 0 rgba(45, 212, 191, 0.75); }
-  89.5% { transform: translate(2px, -1px) skewX(2deg); text-shadow: 3px 0 rgba(61, 220, 132, 0.75), -3px 0 rgba(45, 212, 191, 0.75); }
-  91% { transform: translate(-1px, 0.5px); clip-path: inset(10% 0 52% 0); text-shadow: -2px 0 rgba(61, 220, 132, 0.75), 2px 0 rgba(45, 212, 191, 0.75); }
-  92.5% { transform: none; clip-path: inset(58% 0 8% 0); text-shadow: none; }
-  94% { transform: translate(1px, -0.5px); clip-path: none; text-shadow: 1.5px 0 rgba(61, 220, 132, 0.5), -1.5px 0 rgba(45, 212, 191, 0.5); }
-  100% { transform: none; clip-path: none; text-shadow: none; }
 }
 
 /* ---------- Button shine sweep ---------- */
@@ -2466,6 +2504,10 @@ main {
   .particles,
   .ambient-glow {
     display: none !important;
+  }
+  .hero-title::after {
+    animation: none !important;
+    display: none;
   }
   .btn-primary::after,
   .card.tilt::before,
