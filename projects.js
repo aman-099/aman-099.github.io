@@ -22,7 +22,7 @@
   /* ============================================================
      PLAY STORE CONFIG (same as homepage)
      ============================================================ */
-  const PLAY_STORE_WORKER = "";
+  const PLAY_STORE_WORKER = "https://playstore-proxy.sc6293270.workers.dev"; // Cloudflare Worker proxy
   const CACHE_TTL = 3600000;
 
   function extractAppId(p) {

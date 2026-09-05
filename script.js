@@ -27,7 +27,7 @@
   /* ============================================================
      PLAY STORE CONFIG
      ============================================================ */
-  const PLAY_STORE_WORKER = ""; // paste your Cloudflare Worker URL here
+  const PLAY_STORE_WORKER = "https://playstore-proxy.sc6293270.workers.dev"; // Cloudflare Worker proxy
   const CACHE_TTL = 3600000; // 1 hour in ms
 
   function extractAppId(p) {
