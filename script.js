@@ -298,7 +298,7 @@
     const clickable = inOverlay ? ` style="cursor:pointer;--i:${idx || 0}"` : '';
 
     const iconHtml = appId
-      ? `<div class="proj-icon" data-app-id="${appId}"><div class="proj-icon-loading" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span></div></div>`
+      ? `<div class="proj-icon" data-app-id="${appId}"><div class="proj-icon-loading" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span></div><div class="proj-store-info" data-app-id="${appId}"></div></div>`
       : `<div class="thumb" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span><span class="thumb-chip mono">${catLabel}</span></div>`;
 
     const hasGithub = p.links.github && p.links.github !== "#";
@@ -309,17 +309,12 @@
         ${hasLive ? `<a href="${p.links.live}" class="proj-link mono" target="_blank" rel="noopener" data-stop>LIVE DEMO ${icons.arrow}</a>` : ""}
       </div>` : "";
 
-    const storeInfoHtml = appId && PLAY_STORE_WORKER
-      ? `<div class="proj-store-info mono" data-app-id="${appId}"></div>`
-      : "";
-
     return `
       <article class="glass card card-project" ${dataAttrs}${clickable}>
         ${iconHtml}
         <div class="proj-body">
           <h3>${p.title}</h3>
           <p>${p.desc}</p>
-          ${storeInfoHtml}
           <div class="chips">${p.tags.map(t => `<span class="chip mono">${t}</span>`).join("")}</div>
           ${linksHtml}
         </div>
@@ -1044,7 +1039,14 @@
           /* Update card icon */
           const iconEl = document.querySelector(`.proj-icon[data-app-id="${appId}"]`);
           if (iconEl && psData.icon) {
-            iconEl.innerHTML = `<img class="proj-icon-img" src="${psData.icon}" alt="${p.title} icon" loading="lazy" />`;
+            iconEl.innerHTML = `
+              <img class="proj-icon-bg" src="${psData.icon}" alt="" aria-hidden="true" />
+              <div class="proj-icon-shade"></div>
+              <span class="proj-icon-frame">
+                <img class="proj-icon-img" src="${psData.icon}" alt="${p.title} icon" loading="lazy" />
+              </span>
+              <div class="proj-store-info" data-app-id="${appId}"></div>
+            `;
           }
           /* Update card store info */
           const infoEl = document.querySelector(`.proj-store-info[data-app-id="${appId}"]`);
