@@ -133,7 +133,7 @@
     const appId = extractAppId(p);
 
     const iconHtml = appId
-      ? `<div class="proj-icon" data-app-id="${appId}"><div class="proj-icon-loading" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span></div><div class="proj-store-info" data-app-id="${appId}"></div></div>`
+      ? `<div class="proj-icon" data-app-id="${appId}"><div class="proj-icon-loading" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span></div><div class="proj-store-info" data-app-id="${appId}"></div><div class="proj-downloads-info" data-app-id="${appId}"></div></div>`
       : `<div class="thumb" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span><span class="thumb-chip mono">${catLabel}</span></div>`;
 
     const hasGithub = p.links.github && p.links.github !== "#";
@@ -405,24 +405,30 @@
           iconEl.innerHTML = `
             <img class="proj-icon-bg" src="${psData.icon}" alt="" aria-hidden="true" />
             <div class="proj-icon-shade"></div>
+            <div class="proj-store-info" data-app-id="${appId}"></div>
             <span class="proj-icon-frame">
               <img class="proj-icon-img" src="${psData.icon}" alt="${p.title} icon" loading="lazy" />
             </span>
-            <div class="proj-store-info" data-app-id="${appId}"></div>
+            <div class="proj-downloads-info" data-app-id="${appId}"></div>
           `;
         }
         const infoEl = document.querySelector(`.proj-store-info[data-app-id="${appId}"]`);
-        if (infoEl) {
+        if (infoEl && psData.rating) {
           const stars = psData.rating ? Math.round(psData.rating * 2) / 2 : 0;
           const full = Math.floor(stars);
           const half = stars % 1 >= 0.5 ? 1 : 0;
           const empty = 5 - full - half;
           const starsStr = "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
+          const rated = formatDownloads(psData.ratingCount);
+          infoEl.innerHTML =
+            `<span class="proj-rating">${starsStr} ${psData.rating.toFixed(1)}</span>` +
+            (rated ? `<span class="proj-rating-count">${rated} ratings</span>` : "");
+        }
+        const dlEl = document.querySelector(`.proj-downloads-info[data-app-id="${appId}"]`);
+        if (dlEl && psData.downloads) {
           const dl = formatDownloads(psData.downloads);
-          let html = "";
-          if (psData.rating) html += `<span class="proj-rating">${starsStr} ${psData.rating.toFixed(1)}</span>`;
-          if (dl) html += `<span class="proj-downloads">${dl}</span>`;
-          infoEl.innerHTML = html;
+          dlEl.innerHTML =
+            `<span class="proj-downloads">${dl}</span><span class="proj-downloads-label">DOWNLOADS</span>`;
         }
       })
     );
