@@ -16,6 +16,8 @@
     "titleLine1": "BEHIND THE",
     "titleLine2": "SCREEN",
     "subtitle": "I'm Aman Kushwaha — a Kotlin Android developer with 2+ years shipping utility and productivity apps to the Play Store. MVVM to release builds, REST APIs to AdMob, and everything in between.",
+    "taglinePrefix": "BUILT WITH",
+    "typerWords": ["KOTLIN", "JETPACK COMPOSE", "MVVM", "CLEAN ARCHITECTURE", "RELEASE-GRADE APPS"],
     "stats": [
       { "value": "2+", "label": "YEARS ANDROID" },
       { "value": "7+", "label": "APPS SHIPPED" },

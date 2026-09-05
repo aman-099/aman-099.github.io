@@ -506,6 +506,39 @@ main {
   max-width: 36ch;
 }
 
+/* Tagline with rotating typewriter word */
+.hero-tagline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 18px 0 0;
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+.typer-wrap {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.1em;
+}
+.typer {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 20px rgba(61, 220, 132, 0.35);
+}
+.typer-caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.95em;
+  margin-left: 6px;
+  background: var(--accent);
+  animation: caretBlink 0.9s steps(1) infinite;
+}
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
 .hero-actions {
   display: flex;
   align-items: center;
@@ -1009,10 +1042,40 @@ main {
   font-size: 0.62rem;
   color: var(--accent);
 }
+.tl-company-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 6px;
+}
+.tl-logo {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font: 600 0.64rem/1 var(--font-mono);
+  letter-spacing: 0.06em;
+  color: #e4f2e9;
+  background: var(--lg);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
+}
 .tl-company {
-  font-size: 0.64rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #e4f2e9;
+  letter-spacing: 0.06em;
+}
+.tl-company-dot {
+  color: var(--accent);
+  font-style: normal;
+}
+.tl-company-loc {
   color: var(--muted);
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
 }
 .tl-card p {
   font-size: var(--fs-card-body);
@@ -1191,19 +1254,35 @@ main {
   display: none;
 }
 .proj-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   color: var(--accent);
   letter-spacing: 0.04em;
   white-space: nowrap;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.stars-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.star {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  display: block;
 }
 .proj-rating-count {
   color: rgba(228, 242, 233, 0.72);
   white-space: nowrap;
+  font-size: 0.64rem;
 }
 .proj-downloads {
   color: #e4f2e9;
-  font-weight: 600;
-  font-size: 0.8rem;
+  font-weight: 700;
+  font-size: 1rem;
   white-space: nowrap;
 }
 .proj-downloads-label {
@@ -1220,6 +1299,16 @@ main {
   .proj-rating-count,
   .proj-downloads-label {
     display: none;
+  }
+  .star {
+    width: 11px;
+    height: 11px;
+  }
+  .proj-rating {
+    font-size: 0.74rem;
+  }
+  .proj-downloads {
+    font-size: 0.9rem;
   }
 }
 
@@ -2280,9 +2369,6 @@ main {
   .blob-2,
   .blob-3 {
     animation: none;
-  }
-  .marquee-track {
-    animation-play-state: paused;
   }
   .glass,
   .glass-soft,

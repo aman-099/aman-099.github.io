@@ -45,6 +45,49 @@
     return num + "+";
   }
 
+  /* ---------- SVG star row (proper stars, half-star aware) ---------- */
+  let starGradId = 0;
+  function starRow(rating) {
+    const half = Math.round(rating * 2) / 2;
+    let out = `<span class="stars-row" aria-label="${rating.toFixed(1)} out of 5">`;
+    for (let i = 1; i <= 5; i++) {
+      const f = Math.max(0, Math.min(1, half - (i - 1)));
+      const id = "sg" + (starGradId++);
+      out += `
+        <svg class="star" viewBox="0 0 24 24" aria-hidden="true">
+          <defs>
+            <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="${f * 100}%" stop-color="currentColor"/>
+              <stop offset="${f * 100}%" stop-color="rgba(228,242,233,0.16)"/>
+            </linearGradient>
+          </defs>
+          <path d="M12 2.6l2.75 5.6 6.25.9-4.5 4.4 1.05 6.15L12 16.9l-5.55 2.95 1.05-6.15-4.5-4.4 6.25-.9z" fill="url(#${id})" stroke="rgba(228,242,233,0.28)" stroke-width="0.6"/>
+        </svg>`;
+    }
+    return out + "</span>";
+  }
+
+  /* ---------- Animated count-up (premium feel) ---------- */
+  function animateCount(el, target, opts) {
+    if (!el || isNaN(target)) return;
+    const dec = (opts && opts.decimals) || 0;
+    const fmt = (opts && opts.format) || ((n) => n.toFixed(dec));
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || !window.requestAnimationFrame) {
+      el.textContent = fmt(target);
+      return;
+    }
+    const dur = 900;
+    const t0 = performance.now();
+    const step = (t) => {
+      const p = Math.min(1, (t - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
   function getCachedPs(appId) {
     try {
       const raw = sessionStorage.getItem("ps2_" + appId);
@@ -189,7 +232,11 @@
     };
     const release = () => {
       document.body.style.cssText = "";
+      const html = document.documentElement;
+      const prev = html.style.scrollBehavior;
+      html.style.scrollBehavior = "auto";
       window.scrollTo(0, top);
+      html.style.scrollBehavior = prev;
     };
     return {
       lock() { if (count === 0) apply(); count += 1; },
@@ -288,16 +335,13 @@
 
     let ratingHtml = "";
     if (ps && ps.rating) {
-      const stars = Math.round(ps.rating * 2) / 2;
-      const full = Math.floor(stars);
-      const half = stars % 1 >= 0.5 ? 1 : 0;
-      const empty = 5 - full - half;
-      const starsStr = "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
       const downloadsStr = formatDownloads(ps.downloads);
       ratingHtml = `
         <div class="modal-store-stats">
-          ${ps.rating ? `<span class="modal-rating"><span class="stars">${starsStr}</span> <span class="mono">${ps.rating.toFixed(1)}</span> ${ps.ratingCount ? `<span class="review-count mono">(${Number(ps.ratingCount).toLocaleString()} reviews)</span>` : ""}</span>` : ""}
-          ${downloadsStr ? `<span class="modal-downloads mono">${downloadsStr} downloads</span>` : ""}
+          ${ps.rating
+            ? `<span class="modal-rating">${starRow(ps.rating)}<span class="modal-rating-num mono">0.0</span> ${ps.ratingCount ? `<span class="review-count mono">(${Number(ps.ratingCount).toLocaleString()} reviews)</span>` : ""}</span>`
+            : ""}
+          ${downloadsStr ? `<span class="modal-downloads mono" data-modal-dl>0 downloads</span>` : ""}
         </div>`;
     }
 
@@ -314,6 +358,15 @@
         ${p.links.live && p.links.live !== "#" ? `<a href="${p.links.live}" class="btn btn-primary magnetic" target="_blank" rel="noopener">${icons.arrow} LIVE DEMO</a>` : ""}
       </div>
     `;
+    if (ps && ps.rating) {
+      animateCount(modalBody.querySelector(".modal-rating-num"), ps.rating, { decimals: 1 });
+      const dlNode = modalBody.querySelector("[data-modal-dl]");
+      const dlRaw = (ps.downloads ? parseInt(String(ps.downloads).replace(/[^0-9]/g, ""), 10) : 0) || 0;
+      if (dlNode && dlRaw) {
+        dlNode.textContent = "0 downloads";
+        animateCount(dlNode, dlRaw, { format: (n) => formatDownloads(n) + " downloads" });
+      }
+    }
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     scrollLock.lock();
@@ -425,21 +478,20 @@
         }
         const infoEl = document.querySelector(`.proj-store-info[data-app-id="${appId}"]`);
         if (infoEl && psData.rating) {
-          const stars = psData.rating ? Math.round(psData.rating * 2) / 2 : 0;
-          const full = Math.floor(stars);
-          const half = stars % 1 >= 0.5 ? 1 : 0;
-          const empty = 5 - full - half;
-          const starsStr = "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
           const rated = formatDownloads(psData.ratingCount);
           infoEl.innerHTML =
-            `<span class="proj-rating">${starsStr} ${psData.rating.toFixed(1)}</span>` +
+            `<span class="proj-rating">${starRow(psData.rating)}<span class="proj-rating-num">0.0</span></span>` +
             (rated ? `<span class="proj-rating-count">${rated} ratings</span>` : "");
+          animateCount(infoEl.querySelector(".proj-rating-num"), psData.rating, { decimals: 1 });
         }
         const dlEl = document.querySelector(`.proj-downloads-info[data-app-id="${appId}"]`);
         if (dlEl && psData.downloads) {
-          const dl = formatDownloads(psData.downloads);
+          const rawDl = parseInt(String(psData.downloads).replace(/[^0-9]/g, ""), 10) || 0;
           dlEl.innerHTML =
-            `<span class="proj-downloads">${dl}</span><span class="proj-downloads-label">DOWNLOADS</span>`;
+            `<span class="proj-downloads">0</span><span class="proj-downloads-label">DOWNLOADS</span>`;
+          animateCount(dlEl.querySelector(".proj-downloads"), rawDl, {
+            format: (n) => (n === 0 ? "0" : formatDownloads(n)),
+          });
         }
       })
     );
