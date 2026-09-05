@@ -1,26 +1,26 @@
 {
   "personal": {
-    "name": "YOUR_NAME",
+    "name": "Aman Kushwaha",
     "role": "Android Developer",
     "bio": [
-      "I build Android apps the way good software should be built — <strong>fast, tested and a pleasure to use</strong>. I sweat the small stuff: animation curves, empty states, offline behaviour, and that last 5% of polish most people skip.",
-      "Currently shipping production Kotlin with <strong>Jetpack Compose</strong>, <strong>Coroutines &amp; Flow</strong> and <strong>Clean Architecture</strong>. When I'm not debugging, I'm writing about Android or pushing open source."
+      "I build Android apps the way good software should be built — <strong>fast, stable and a pleasure to use</strong>. I sweat the small stuff: ANRs, memory leaks, background services, and the last 5% of polish most people skip.",
+      "Currently shipping production Kotlin with <strong>MVVM</strong>, <strong>Clean Architecture</strong> and Android Jetpack at Vasundhara Infotech. 2+ years, 7+ apps on the Play Store, and fully remote-ready."
     ],
-    "email": "you@email.com",
-    "location": "Remote / Earth",
-    "education": "B.Tech CSE",
-    "status": "Available for work"
+    "email": "kushwahaamanbhunna@gmail.com",
+    "location": "Ankleshwar, Gujarat, India",
+    "education": "BCA · Veer Narmad South Gujarat University",
+    "status": "Open to Remote & On-site"
   },
   "hero": {
     "kicker": "ANDROID DEVELOPER · OPEN FOR WORK",
     "titleLine1": "BEHIND THE",
     "titleLine2": "SCREEN",
-    "subtitle": "I'm Your Name — an Android developer building fast, clean, human-centred Kotlin apps. Jetpack Compose to release-ready APKs, and everything in between.",
+    "subtitle": "I'm Aman Kushwaha — a Kotlin Android developer with 2+ years shipping utility and productivity apps to the Play Store. MVVM to release builds, REST APIs to AdMob, and everything in between.",
     "stats": [
-      { "value": "3+", "label": "YEARS ANDROID" },
-      { "value": "12", "label": "APPS SHIPPED" },
-      { "value": "4.9★", "label": "AVG RATING" },
-      { "value": "50K+", "label": "DOWNLOADS" }
+      { "value": "2+", "label": "YEARS ANDROID" },
+      { "value": "7+", "label": "APPS SHIPPED" },
+      { "value": "8.14", "label": "BCA CGPA" },
+      { "value": "100%", "label": "REMOTE READY" }
     ],
     "techChips": ["KOTLIN", "COMPOSE", "MVVM", "FIREBASE", "ROOM", "HILT"],
     "statusChips": ["KOTLIN", "COMPOSE", "FIREBASE"],
@@ -30,58 +30,52 @@
     {
       "icon": "{}",
       "title": "Languages",
-      "desc": "Kotlin-first, Java legacy, coroutines & Flow, generics, DSL design."
+      "desc": "Kotlin-first, Dart for Flutter cross-platform, Java legacy, Coroutines & Flow."
     },
     {
       "icon": "UI",
       "title": "UI / Compose",
-      "desc": "Jetpack Compose, Material 3, custom animations, adaptive layouts."
+      "desc": "Jetpack Compose and XML, Material 3, View Binding, custom animations."
     },
     {
       "icon": "DB",
       "title": "Data & Network",
-      "desc": "Room, Retrofit, Ktor, DataStore, offline-first caching."
+      "desc": "REST APIs with Retrofit/OkHttp, Room, SQLite, DataStore, JSON parsing."
     },
     {
       "icon": "▲",
       "title": "Architecture",
-      "desc": "MVVM, Clean Architecture, Hilt DI, multi-module builds."
+      "desc": "MVVM, Clean Architecture, modular structure, WorkManager, background services."
     },
     {
       "icon": "✓",
-      "title": "Quality",
-      "desc": "Unit / UI tests, TDD, Compose testing, Firebase Test Lab."
+      "title": "Quality & Tools",
+      "desc": "Git, Gradle, ProGuard/R8, Android Studio, Postman, code reviews, debugging."
     },
     {
       "icon": "▶",
       "title": "Ship & Grow",
-      "desc": "Play Store release, CI/CD, analytics, performance profiling."
+      "desc": "Play Store releases, CI/CD, AdMob & AppLovin monetization, Firebase."
     }
   ],
   "proficiency": [
-    { "label": "Kotlin / Compose", "level": 95 },
-    { "label": "Architecture & Testing", "level": 88 },
-    { "label": "Java / Legacy", "level": 78 },
-    { "label": "DevOps / CI-CD", "level": 72 }
+    { "label": "Kotlin / Android", "level": 95 },
+    { "label": "MVVM / Clean Architecture", "level": 90 },
+    { "label": "APIs / Data", "level": 86 },
+    { "label": "Play Store / CI-CD", "level": 82 }
   ],
   "experience": [
     {
-      "role": "Senior Android Engineer",
-      "company": "Company / Studio",
-      "date": "2024 — NOW",
-      "desc": "Leading the Android app for a 1M+ user product. Compose-first rewrite, CI/CD rollout, 40% crash reduction."
+      "role": "Android Developer",
+      "company": "Vasundhara Infotech LLP | Surat, Gujarat",
+      "date": "Aug 2025 — NOW",
+      "desc": "Designing and shipping production Android apps in Kotlin with MVVM. REST API integration, Firebase services, performance tuning, and end-to-end Play Store deployments in a remote-ready Agile/Scrum team."
     },
     {
       "role": "Android Developer",
-      "company": "Agency / Startup",
-      "date": "2022 — 2024",
-      "desc": "Shipped 8 apps across fintech, fitness and e-commerce. Owned architecture, releases and Play Store uplift."
-    },
-    {
-      "role": "Freelance Developer",
-      "company": "Self-employed",
-      "date": "2021 — 2022",
-      "desc": "Built MVPs and hobby apps end-to-end. Learned to ship things people actually use."
+      "company": "Prime Solutions | Bharuch, Gujarat",
+      "date": "May 2024 — Jul 2025",
+      "desc": "Built native Android apps and supported Flutter cross-platform projects. Owned Git version control, Gradle builds, and CI/CD pipelines; collaborated with remote stakeholders from requirements to delivery."
     }
   ],
   "projects": [
