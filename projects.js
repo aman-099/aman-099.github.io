@@ -47,7 +47,7 @@
 
   function getCachedPs(appId) {
     try {
-      const raw = sessionStorage.getItem("ps_" + appId);
+      const raw = sessionStorage.getItem("ps2_" + appId);
       if (!raw) return null;
       const d = JSON.parse(raw);
       if (Date.now() - d.ts > CACHE_TTL) return null;
@@ -56,7 +56,7 @@
   }
 
   function setCachedPs(appId, data) {
-    try { sessionStorage.setItem("ps_" + appId, JSON.stringify({ ts: Date.now(), data })); } catch {}
+    try { sessionStorage.setItem("ps2_" + appId, JSON.stringify({ ts: Date.now(), data })); } catch {}
   }
 
   async function fetchPlayStoreData(appId) {
@@ -67,11 +67,12 @@
       const res = await fetch(PLAY_STORE_WORKER + "?id=" + encodeURIComponent(appId));
       if (!res.ok) return null;
       const d = await res.json();
+      const r = parseFloat(d.rating);
       const result = {
-        icon: d.icon || null,
-        rating: d.score || null,
-        ratingCount: d.reviews || null,
-        downloads: d.installs || null,
+        icon: d.logo || null,
+        rating: isNaN(r) ? null : r,
+        ratingCount: d.noOfUsersRated || d.reviews || null,
+        downloads: d.downloadsExact || d.downloads || null,
         screenshots: (d.screenshots || []).slice(0, 6),
       };
       setCachedPs(appId, result);
