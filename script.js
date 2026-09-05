@@ -205,7 +205,7 @@
       </div>
       <h1 class="hero-title">
         <span class="line">${h.titleLine1}</span>
-        <span class="line line-accent grad-text">${h.titleLine2}<i>.</i></span>
+        <span class="line line-accent grad-text">${h.titleLine2}<i>.</i><span class="hi-underline" aria-hidden="true"></span></span>
       </h1>
       ${h.typerWords && h.typerWords.length ? `
         <p class="hero-tagline mono">
@@ -1143,7 +1143,7 @@
       })
         .then(res => res.json())
         .then(d => {
-          if (d && d.success === true) {
+          if (d && (d.success === true || d.success === "true")) {
             btn.innerHTML = "✓ Sent — I'll reply soon";
             form.querySelectorAll(".field-input").forEach((f) => (f.value = ""));
           } else {

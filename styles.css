@@ -1945,16 +1945,48 @@ main {
   will-change: transform;
 }
 .hero-title .line-accent {
+  position: relative;
   background: linear-gradient(100deg, #3ddc84 15%, #a7f3d0 38%, #2dd4bf 55%, #3ddc84 80%);
   background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: shineTxt 7s linear infinite;
+  animation: shineTxt 7s linear infinite, accentGlitch 9s steps(1) infinite;
 }
 @keyframes shineTxt {
   to { background-position: 220% center; }
+}
+
+/* Blue fade: underline draws in, the "screen" reveals */
+.hi-underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.07em;
+  height: 0.09em;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--accent), var(--teal), var(--accent));
+  background-size: 200% auto;
+  box-shadow: 0 0 16px rgba(61, 220, 132, 0.5), 0 0 4px rgba(45, 212, 191, 0.4);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: hiDraw 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards, shineTxt 6s linear 1.7s infinite;
+  pointer-events: none;
+}
+@keyframes hiDraw {
+  to { transform: scaleX(1); }
+}
+
+/* Periodic glitch burst on the accent line */
+@keyframes accentGlitch {
+  0%, 87.4% { transform: none; clip-path: none; text-shadow: none; }
+  88% { transform: translate(-2px, 1px) skewX(-2deg); text-shadow: -3px 0 rgba(61, 220, 132, 0.75), 3px 0 rgba(45, 212, 191, 0.75); }
+  89.5% { transform: translate(2px, -1px) skewX(2deg); text-shadow: 3px 0 rgba(61, 220, 132, 0.75), -3px 0 rgba(45, 212, 191, 0.75); }
+  91% { transform: translate(-1px, 0.5px); clip-path: inset(10% 0 52% 0); text-shadow: -2px 0 rgba(61, 220, 132, 0.75), 2px 0 rgba(45, 212, 191, 0.75); }
+  92.5% { transform: none; clip-path: inset(58% 0 8% 0); text-shadow: none; }
+  94% { transform: translate(1px, -0.5px); clip-path: none; text-shadow: 1.5px 0 rgba(61, 220, 132, 0.5), -1.5px 0 rgba(45, 212, 191, 0.5); }
+  100% { transform: none; clip-path: none; text-shadow: none; }
 }
 
 /* ---------- Button shine sweep ---------- */
@@ -2419,9 +2451,16 @@ main {
   .grain,
   .marquee-track,
   .hero-title .line-accent,
+  .hi-underline,
   .bar-fill::after,
   .particle {
     animation: none !important;
+  }
+  .hero-title .line-accent,
+  .hi-underline {
+    transform: none;
+    text-shadow: none;
+    clip-path: none;
   }
   .grain,
   .particles,

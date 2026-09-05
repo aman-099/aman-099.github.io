@@ -14,8 +14,8 @@ window.DATA =
   },
   "hero": {
     "kicker": "ANDROID DEVELOPER · OPEN FOR WORK",
-    "titleLine1": "BEHIND THE",
-    "titleLine2": "SCREEN",
+    "titleLine1": "PIXELS",
+    "titleLine2": "WITH PURPOSE",
     "subtitle": "I'm Aman Kushwaha — a Kotlin Android developer with 2+ years shipping utility and productivity apps to the Play Store. MVVM to release builds, REST APIs to AdMob, and everything in between.",
     "taglinePrefix": "BUILT WITH",
     "typerWords": [
