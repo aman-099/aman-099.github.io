@@ -1034,7 +1034,18 @@
     const results = await Promise.allSettled(
       androidProjects.map(async (p) => {
         const appId = extractAppId(p);
-        const psData = await fetchPlayStoreData(appId);
+        let psData = await fetchPlayStoreData(appId);
+        if (!psData || !psData.icon) {
+          psData = p.playStore
+            ? {
+                icon: p.playStore.icon || null,
+                rating: p.playStore.rating || null,
+                ratingCount: p.playStore.ratingCount || null,
+                downloads: p.playStore.downloads || null,
+                screenshots: [],
+              }
+            : null;
+        }
         if (psData) {
           psDataMap[p.id] = psData;
           /* Update card icon */

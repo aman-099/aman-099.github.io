@@ -107,7 +107,13 @@
         "github": "#",
         "live": "#"
       },
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.scanner.phone.document.pdf.files.creator"
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.scanner.phone.document.pdf.files.creator",
+      "playStore": {
+        "icon": "https://play-lh.googleusercontent.com/FrWFUloEjt7Z0-6hCE_7nCmFmMdoiJDvviuMDD4uu1g3zTmv8P-iXMmNLaeEhVVD6ZEl8m19ZKdohH1zgEiq=w512-h512-rw",
+        "rating": 4.46,
+        "ratingCount": 8000,
+        "downloads": "2,000,000+"
+      }
     },
     {
       "id": "show-caller",
