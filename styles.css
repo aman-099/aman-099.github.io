@@ -632,7 +632,6 @@ main {
   z-index: 2;
   opacity: 0;
   transition: opacity 0.25s ease;
-  background: var(--bg);
   -webkit-mask-image: radial-gradient(circle var(--mask-radius) at var(--x, 50%) var(--y, 50%), #000 55%, rgba(0, 0, 0, 0.45) 78%, transparent 97%);
   mask-image: radial-gradient(circle var(--mask-radius) at var(--x, 50%) var(--y, 50%), #000 55%, rgba(0, 0, 0, 0.45) 78%, transparent 97%);
   -webkit-mask-repeat: no-repeat;
