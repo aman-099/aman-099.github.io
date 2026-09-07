@@ -521,25 +521,47 @@
       });
       frame.addEventListener("pointerleave", () => delete frame.dataset.hover);
     } else {
-      let drag = false;
-      const moveSpot = (e) => {
+      frame.dataset.hover = "true";
+      let drag = false, idleRaf = null, idlePhase = 0;
+
+      function stopIdle() {
+        if (idleRaf) cancelAnimationFrame(idleRaf);
+        idleRaf = null;
+      }
+      function startIdle() {
+        stopIdle();
         const rect = frame.getBoundingClientRect();
-        setSpot(e.clientX - rect.left, e.clientY - rect.top);
-      };
+        const cx = rect.width / 2;
+        const cy = rect.height / 3;
+        const loop = () => {
+          idlePhase += 0.02;
+          const r = rect.width * 0.1 + Math.sin(idlePhase) * 9;
+          setSpot(cx + Math.cos(idlePhase * 1.3) * rect.width * 0.12, cy);
+          frame.style.setProperty("--mask-radius", Math.max(60, r) + "px");
+          idleRaf = requestAnimationFrame(loop);
+        };
+        idleRaf = requestAnimationFrame(loop);
+      }
+
+      function moveSpot(e) {
+        const rect = frame.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        setSpot(x, y);
+      }
+
       frame.addEventListener("pointerdown", (e) => {
         drag = true;
+        stopIdle();
         frame.setPointerCapture(e.pointerId);
         moveSpot(e);
         frame.style.setProperty("--mask-radius", "92px");
-        frame.dataset.hover = "true";
       });
       frame.addEventListener("pointermove", (e) => { if (drag) moveSpot(e); });
-      const end = () => {
-        drag = false;
-        delete frame.dataset.hover;
-      };
+      const end = () => { drag = false; startIdle(); };
       frame.addEventListener("pointerup", end);
       frame.addEventListener("pointercancel", end);
+      startIdle();
     }
   }
 
