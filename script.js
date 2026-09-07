@@ -233,10 +233,10 @@
         <div class="visual-glow" aria-hidden="true"></div>
         <div class="hero-visual" id="reveal-frame">
           <div class="hero-img base-layer">
-            <img src="assets/placeholder-masked.png" alt="Developer avatar in stealth mode" draggable="false" loading="eager" />
-          </div>
-          <div class="hero-img reveal-layer" data-reveal-layer>
             <img src="assets/placeholder-unmasked.png" alt="Developer avatar revealed" draggable="false" loading="eager" />
+          </div>
+          <div class="hero-img mask-layer" data-reveal-layer>
+            <img src="assets/placeholder-masked.png" alt="Developer avatar in stealth mode" draggable="false" loading="eager" />
           </div>
           <a href="#work" class="trailer-pill glass magnetic">
             <span class="play-ic">${icons.play}</span>

@@ -628,19 +628,14 @@ main {
   height: 100%;
   object-fit: contain;
 }
-.reveal-layer {
+.mask-layer {
   z-index: 2;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  -webkit-mask-image: radial-gradient(circle var(--mask-radius) at var(--x, 50%) var(--y, 50%), #000 55%, rgba(0, 0, 0, 0.45) 78%, transparent 97%);
-  mask-image: radial-gradient(circle var(--mask-radius) at var(--x, 50%) var(--y, 50%), #000 55%, rgba(0, 0, 0, 0.45) 78%, transparent 97%);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: auto;
-  mask-size: auto;
 }
-.hero-visual[data-hover] .reveal-layer {
-  opacity: 1;
+.hero-visual[data-hover] .mask-layer {
+  -webkit-mask-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%), transparent calc(var(--mask-radius) * 0.55), rgba(0, 0, 0, 0.45) calc(var(--mask-radius) * 0.8), #000 calc(var(--mask-radius) * 0.97), #000);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  mask-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%), transparent calc(var(--mask-radius) * 0.55), rgba(0, 0, 0, 0.45) calc(var(--mask-radius) * 0.8), #000 calc(var(--mask-radius) * 0.97), #000);
 }
 
 /* floating chips */
