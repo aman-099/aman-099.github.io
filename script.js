@@ -233,7 +233,7 @@
         <div class="visual-glow" aria-hidden="true"></div>
         <div class="hero-visual" id="reveal-frame">
           <div class="hero-img base-layer">
-            <img src="assets/placeholder-masked.jpg" alt="Developer avatar in stealth mode" draggable="false" loading="eager" />
+            <img src="assets/placeholder-masked.png" alt="Developer avatar in stealth mode" draggable="false" loading="eager" />
           </div>
           <div class="hero-img reveal-layer" data-reveal-layer>
             <img src="assets/placeholder-unmasked.png" alt="Developer avatar revealed" draggable="false" loading="eager" />
