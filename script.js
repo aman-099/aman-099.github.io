@@ -520,6 +520,26 @@
         setSpot(p.x, p.y);
       });
       frame.addEventListener("pointerleave", () => delete frame.dataset.hover);
+    } else {
+      let drag = false;
+      const moveSpot = (e) => {
+        const rect = frame.getBoundingClientRect();
+        setSpot(e.clientX - rect.left, e.clientY - rect.top);
+      };
+      frame.addEventListener("pointerdown", (e) => {
+        drag = true;
+        frame.setPointerCapture(e.pointerId);
+        moveSpot(e);
+        frame.style.setProperty("--mask-radius", "92px");
+        frame.dataset.hover = "true";
+      });
+      frame.addEventListener("pointermove", (e) => { if (drag) moveSpot(e); });
+      const end = () => {
+        drag = false;
+        delete frame.dataset.hover;
+      };
+      frame.addEventListener("pointerup", end);
+      frame.addEventListener("pointercancel", end);
     }
   }
 
