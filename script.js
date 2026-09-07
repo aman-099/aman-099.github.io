@@ -478,6 +478,19 @@
   /* ---------- Spotlight reveal ---------- */
   const frame = document.getElementById("reveal-frame");
   if (frame) {
+    /* Fit the frame to the artwork's natural ratio (no forced crop) */
+    const fitFrameToImage = () => {
+      const img = frame.querySelector(".base-layer img");
+      if (img && img.naturalWidth && img.naturalHeight) {
+        frame.style.aspectRatio = String(img.naturalWidth / img.naturalHeight);
+      }
+    };
+    const baseImg = frame.querySelector(".base-layer img");
+    if (baseImg) {
+      if (baseImg.complete) fitFrameToImage();
+      else baseImg.addEventListener("load", fitFrameToImage);
+    }
+
     const setSpot = (x, y) => {
       frame.style.setProperty("--x", x + "px");
       frame.style.setProperty("--y", y + "px");
@@ -522,7 +535,7 @@
         const cy = rect.height / 3;
         const loop = () => {
           idlePhase += 0.02;
-          const r = rect.width * 0.16 + Math.sin(idlePhase) * 12;
+          const r = rect.width * 0.1 + Math.sin(idlePhase) * 9;
           setSpot(cx + Math.cos(idlePhase * 1.3) * rect.width * 0.12, cy);
           frame.style.setProperty("--mask-radius", Math.max(60, r) + "px");
           idleRaf = requestAnimationFrame(loop);
@@ -542,7 +555,7 @@
         stopIdle();
         frame.setPointerCapture(e.pointerId);
         moveSpot(e);
-        frame.style.setProperty("--mask-radius", "150px");
+        frame.style.setProperty("--mask-radius", "96px");
       });
       frame.addEventListener("pointermove", (e) => { if (drag) moveSpot(e); });
       const end = () => { drag = false; startIdle(); };
