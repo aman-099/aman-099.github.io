@@ -522,7 +522,7 @@
       frame.addEventListener("pointerleave", () => delete frame.dataset.hover);
     } else {
       frame.dataset.hover = "true";
-      let drag = false, idleRaf = null, idlePhase = 0;
+      let drag = false, idleRaf = null, idlePhase = 0, userTouched = false;
 
       function stopIdle() {
         if (idleRaf) cancelAnimationFrame(idleRaf);
@@ -551,6 +551,7 @@
       }
 
       frame.addEventListener("pointerdown", (e) => {
+        userTouched = true;
         drag = true;
         stopIdle();
         frame.setPointerCapture(e.pointerId);
@@ -558,7 +559,7 @@
         frame.style.setProperty("--mask-radius", "92px");
       });
       frame.addEventListener("pointermove", (e) => { if (drag) moveSpot(e); });
-      const end = () => { drag = false; startIdle(); };
+      const end = () => { drag = false; if (!userTouched) startIdle(); };
       frame.addEventListener("pointerup", end);
       frame.addEventListener("pointercancel", end);
       startIdle();
