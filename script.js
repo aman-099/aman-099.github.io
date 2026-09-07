@@ -553,13 +553,18 @@
       frame.addEventListener("pointerdown", (e) => {
         userTouched = true;
         drag = true;
+        frame.dataset.hover = "true";
         stopIdle();
         frame.setPointerCapture(e.pointerId);
         moveSpot(e);
         frame.style.setProperty("--mask-radius", "92px");
       });
       frame.addEventListener("pointermove", (e) => { if (drag) moveSpot(e); });
-      const end = () => { drag = false; if (!userTouched) startIdle(); };
+      const end = () => {
+        drag = false;
+        if (userTouched) delete frame.dataset.hover;
+        else startIdle();
+      };
       frame.addEventListener("pointerup", end);
       frame.addEventListener("pointercancel", end);
       startIdle();
