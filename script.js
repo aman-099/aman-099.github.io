@@ -370,7 +370,7 @@
       : `<div class="thumb" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span><span class="thumb-chip mono">${catLabel}</span></div>`;
 
     const psChip = appId
-      ? `<a class="ps-chip mono" href="${p.playStoreUrl || `https://play.google.com/store/apps/details?id=${appId}`}" target="_blank" rel="noopener" data-stop title="Open ${p.title} on Play Store"><span class="ps-chip-ico">${icons.playstore}</span>PLAY STORE<span class="ps-chip-arrow">${icons.arrow}</span></a>`
+      ? `<a class="ps-chip mono" href="${p.storeUrl || p.playStoreUrl || `https://play.google.com/store/apps/details?id=${appId}`}" target="_blank" rel="noopener" data-stop title="Open ${p.title} on Play Store"><span class="ps-chip-ico">${icons.playstore}</span>PLAY STORE<span class="ps-chip-arrow">${icons.arrow}</span></a>`
       : "";
 
     const hasGithub = p.links.github && p.links.github !== "#";
@@ -1264,7 +1264,7 @@
                 rating: p.playStore.rating || null,
                 ratingCount: p.playStore.ratingCount || null,
                 downloads: p.playStore.downloads || null,
-                screenshots: [],
+                screenshots: p.playStore.screenshots || [],
               }
             : null;
         }

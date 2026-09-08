@@ -170,11 +170,22 @@ window.DATA =
         "live": "#"
       },
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.scanner.phone.document.pdf.files.creator",
+      "storeUrl": "https://apkcube.com/pdf-reader-edit-view/com.scanner.phone.document.pdf.files.creator",
       "playStore": {
         "icon": "https://play-lh.googleusercontent.com/FrWFUloEjt7Z0-6hCE_7nCmFmMdoiJDvviuMDD4uu1g3zTmv8P-iXMmNLaeEhVVD6ZEl8m19ZKdohH1zgEiq=w512-h512-rw",
         "rating": 4.46,
         "ratingCount": 8000,
-        "downloads": "2,000,000+"
+        "downloads": "2,000,000+",
+        "screenshots": [
+          "https://play-lh.googleusercontent.com/FrWFUloEjt7Z0-6hCE_7nCmFmMdoiJDvviuMDD4uu1g3zTmv8P-iXMMnLaEhhVVD6ZEl8m19ZKdohH1zgEiq",
+          "https://play-lh.googleusercontent.com/X-_maPEQdgyjZQHTqp7_yBcNAbhuP_0AqsYjHJokIYz9CqPmdzAJrYLCy0W5xe2mngB6qKkaK-X5U7I4DxEFPA",
+          "https://play-lh.googleusercontent.com/qrpqIHX743HGWR3hBQWnzadAltS7VDtAQJjKqU3F3zVmE64YvNnOSURSGy_oemLEHu3dYDfpyW1YtByR7c-G",
+          "https://play-lh.googleusercontent.com/m3GJOWMNkUymoWiJ99K4cWcJdGa0i12KIY5PX8wNKqwNEqh5r2yAPhXGeGnu_QkwdEp9V-Zpnz8Dw1y04Cwm9Q",
+          "https://play-lh.googleusercontent.com/LgXyxLLbi7Cv6lAxg_AQExvjjbg20knNquR65QW5K_FSMhDc44nczA9H4o8z7OXcnBdWEUYXyC423o5OMdruTQ",
+          "https://play-lh.googleusercontent.com/VG6OOkZLpQWAkPO-KRIsJLO1tseL4ACvoRltCtLrS9bjfxbn486v6ahWyWQmhxOXIWbMqArwRhQEPb55y4c2AQ",
+          "https://play-lh.googleusercontent.com/vcffe40f4rPSJZwIYIjMLRp8J9RUykh4P6WHAR4oYKELF5dwyBwgn_GLOpO9Xaaki08H3vABGdOfPiGR4IUwVBQ",
+          "https://play-lh.googleusercontent.com/yHUaC7Gj_go4AjtmKg05RPhJXq-Nz7qxKD_irRX-lKW9fPvRwVnlU7zVHryA9SMCiiMYgdogzAAtWqQ5jA-tZDw"
+        ]
       }
     },
     {
