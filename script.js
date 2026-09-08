@@ -107,12 +107,12 @@
     try { sessionStorage.setItem("ps2_" + appId, JSON.stringify({ ts: Date.now(), data })); } catch {}
   }
 
-  async function fetchPlayStoreData(appId) {
+  async function fetchPlayStoreData(appId, slug) {
     if (!PLAY_STORE_WORKER || !appId) return null;
     const cached = getCachedPs(appId);
     if (cached) return cached;
     try {
-      const res = await fetch(PLAY_STORE_WORKER + "?id=" + encodeURIComponent(appId));
+      const res = await fetch(PLAY_STORE_WORKER + "?id=" + encodeURIComponent(appId) + (slug ? "&slug=" + encodeURIComponent(slug) : ""));
       if (!res.ok) return null;
       const d = await res.json();
       const r = parseFloat(d.rating);
@@ -370,7 +370,9 @@
       : `<div class="thumb" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span><span class="thumb-chip mono">${catLabel}</span></div>`;
 
     const psChip = appId
-      ? `<a class="ps-chip mono" href="${p.storeUrl || p.playStoreUrl || `https://play.google.com/store/apps/details?id=${appId}`}" target="_blank" rel="noopener" data-stop title="Open ${p.title} on Play Store"><span class="ps-chip-ico">${icons.playstore}</span>PLAY STORE<span class="ps-chip-arrow">${icons.arrow}</span></a>`
+      ? (p.unpublished
+          ? `<span class="ps-chip ps-chip-unpublished mono" data-stop title="No longer on Google Play"><span class="ps-chip-ico">${icons.playstore}</span>UNPUBLISHED</span>`
+          : `<a class="ps-chip mono" href="${p.playStoreUrl || `https://play.google.com/store/apps/details?id=${appId}`}" target="_blank" rel="noopener" data-stop title="Open ${p.title} on Play Store"><span class="ps-chip-ico">${icons.playstore}</span>PLAY STORE<span class="ps-chip-arrow">${icons.arrow}</span></a>`)
       : "";
 
     const hasGithub = p.links.github && p.links.github !== "#";
@@ -1256,7 +1258,7 @@
     const results = await Promise.allSettled(
       androidProjects.map(async (p) => {
         const appId = extractAppId(p);
-        let psData = await fetchPlayStoreData(appId);
+        let psData = await fetchPlayStoreData(appId, p.apkcubeSlug);
         if (!psData || !psData.icon) {
           psData = p.playStore
             ? {
