@@ -17,6 +17,7 @@
   const icons = {
     github: `<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>`,
     arrow: `<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3m0 0H4m7 0v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    playstore: `<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M.93 1.1C.37 1.76.05 2.66.05 3.7v8.6c0 1.04.32 1.94.88 2.6l.08.08L8.6 8.64V7.36L.93 1.1zM9.42 8.56v-1.47l-.65-.58h-.06L1.55.64C1.87.4 2.29.26 2.78.26h-.01l.44.27 6.98 6.23.23.2.07.03-1.07 1.57zM10.42 7.98l1.55-1.37-3.22-2.85.48-.42L10.42 7.98 10.42 7.98zM1.63.91c.31-.24.73-.4 1.26-.4.02 0 .04.01.06.02l4.79 4.02-.68.66L1.62.91zM10.42 7.98v.02l-1.17 1.44.53.47 3.62 3.22c.41-.34.6-.94.59-1.72l.02-4.64c0-.48-.13-.87-.4-1.15l-.55.49-2.62 2.87zM9.93 9.94l-1.32 1.16L.95 15.04l-.07.07c.21.16.47.25.76.25.53 0 1.06-.2 1.45-.58l7.35-6.51-1.51-1.33v0L9.93 9.94z"/></svg>`,
   };
 
   /* ============================================================
@@ -102,12 +103,13 @@
     try { sessionStorage.setItem("ps2_" + appId, JSON.stringify({ ts: Date.now(), data })); } catch {}
   }
 
-  async function fetchPlayStoreData(appId) {
+  async function fetchPlayStoreData(appId, slug) {
     if (!PLAY_STORE_WORKER || !appId) return null;
     const cached = getCachedPs(appId);
     if (cached) return cached;
     try {
-      const res = await fetch(PLAY_STORE_WORKER + "?id=" + encodeURIComponent(appId));
+      const url = PLAY_STORE_WORKER + "?id=" + encodeURIComponent(appId) + (slug ? "&slug=" + encodeURIComponent(slug) : "");
+      const res = await fetch(url);
       if (!res.ok) return null;
       const d = await res.json();
       const r = parseFloat(d.rating);
@@ -179,6 +181,12 @@
       ? `<div class="proj-icon" data-app-id="${appId}"><div class="proj-icon-loading" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span></div><div class="proj-store-info" data-app-id="${appId}"></div><div class="proj-downloads-info" data-app-id="${appId}"></div></div>`
       : `<div class="thumb" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span><span class="thumb-chip mono">${catLabel}</span></div>`;
 
+    const psChip = appId
+      ? (p.unpublished
+          ? `<span class="ps-chip ps-chip-unpublished mono" data-stop title="No longer on Google Play"><span class="ps-chip-ico">${icons.playstore}</span>UNPUBLISHED</span>`
+          : `<a class="ps-chip mono" href="${p.playStoreUrl || `https://play.google.com/store/apps/details?id=${appId}`}" target="_blank" rel="noopener" data-stop title="Open ${p.title} on Play Store"><span class="ps-chip-ico">${icons.playstore}</span>PLAY STORE<span class="ps-chip-arrow">${icons.arrow}</span></a>`)
+      : "";
+
     const hasGithub = p.links.github && p.links.github !== "#";
     const hasLive = p.links.live && p.links.live !== "#";
     const linksHtml = (hasGithub || hasLive) ? `
@@ -190,6 +198,7 @@
     return `
       <article class="glass card card-project" data-category="${p.category}" data-project-id="${p.id}" data-app-id="${appId || ""}" style="--i:${idx}">
         ${iconHtml}
+        ${psChip}
         <div class="proj-body">
           <h3>${p.title}</h3>
           <p>${p.desc}</p>
@@ -450,7 +459,7 @@
     const results = await Promise.allSettled(
       androidProjects.map(async (p) => {
         const appId = extractAppId(p);
-        let psData = await fetchPlayStoreData(appId);
+        let psData = await fetchPlayStoreData(appId, p.apkcubeSlug);
         if (!psData || !psData.icon) {
           psData = p.playStore
             ? {
@@ -458,7 +467,7 @@
                 rating: p.playStore.rating || null,
                 ratingCount: p.playStore.ratingCount || null,
                 downloads: p.playStore.downloads || null,
-                screenshots: [],
+                screenshots: p.playStore.screenshots || [],
               }
             : null;
         }
