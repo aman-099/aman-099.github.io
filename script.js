@@ -369,6 +369,10 @@
       ? `<div class="proj-icon" data-app-id="${appId}"><div class="proj-icon-loading" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span></div><div class="proj-store-info" data-app-id="${appId}"></div><div class="proj-downloads-info" data-app-id="${appId}"></div></div>`
       : `<div class="thumb" style="background:${grad}"><span class="thumb-glyph mono">${p.thumb.glyph}</span><span class="thumb-chip mono">${catLabel}</span></div>`;
 
+    const psChip = appId
+      ? `<a class="ps-chip mono" href="${p.playStoreUrl || `https://play.google.com/store/apps/details?id=${appId}`}" target="_blank" rel="noopener" data-stop title="Open ${p.title} on Play Store"><span class="ps-chip-ico">${icons.playstore}</span>PLAY STORE<span class="ps-chip-arrow">${icons.arrow}</span></a>`
+      : "";
+
     const hasGithub = p.links.github && p.links.github !== "#";
     const hasLive = p.links.live && p.links.live !== "#";
     const linksHtml = (hasGithub || hasLive) ? `
@@ -380,6 +384,7 @@
     return `
       <article class="glass card card-project" ${dataAttrs}${clickable}>
         ${iconHtml}
+        ${psChip}
         <div class="proj-body">
           <h3>${p.title}</h3>
           <p>${p.desc}</p>

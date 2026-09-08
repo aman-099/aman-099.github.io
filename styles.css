@@ -1092,6 +1092,7 @@ main {
   gap: var(--sp-5);
 }
 .card-project {
+  position: relative;
   padding: 0;
   overflow: hidden;
 }
@@ -1135,6 +1136,37 @@ main {
   background: rgba(8, 12, 10, 0.6);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(6px);
+}
+.ps-chip {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: rgba(8, 12, 10, 0.72);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
+  padding: 6px 11px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+.ps-chip:hover {
+  border-color: var(--accent);
+  background: rgba(8, 12, 10, 0.92);
+  transform: translateY(-1px);
+}
+.ps-chip .ps-chip-arrow {
+  display: inline-flex;
+  transition: transform 0.3s;
+}
+.ps-chip:hover .ps-chip-arrow {
+  transform: translate(1px, -1px);
 }
 .proj-body {
   display: flex;
